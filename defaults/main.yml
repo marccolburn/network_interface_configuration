@@ -1,0 +1,10 @@
+---
+physical_interfaces:
+  - name: GigabitEthernet0/2
+    description: Default Var Ansible
+    enabled: True
+
+logical_interfaces:
+  - name: GigabitEthernet0/2.10
+    ipv4:
+      address: 192.168.10.1/24

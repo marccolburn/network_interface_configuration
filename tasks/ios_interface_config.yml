@@ -1,0 +1,8 @@
+---
+- name: Configure IOS Physical Interface parameters
+  ios_interfaces:
+    config: "{{ physical_interfaces }}"
+
+- name: Configure IOS Logical Interface Parameters
+  ios_l3_interfaces:
+    config: "{{ logical_interfaces }}"
