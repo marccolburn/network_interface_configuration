@@ -1,5 +1,10 @@
 {% for interface in logical_interfaces %}
+{% if interface.unit is defined %}
 interface {{ interface.name }}.{{ interface.unit }}
-  {% if interface.unit is defined %}encapsulation dot1q {{ interface.unit }}{% endif %}
+  encapsulation dot1q {{ interface.unit }}
   ip address {{ interface['ipv4'][0]['address'] }}
+{% else %}
+interface {{ interface.name }}
+  ip address {{ interface['ipv4'][0]['address'] }}
+{% endif %}
 {% endfor %}
