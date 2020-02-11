@@ -9,6 +9,6 @@
 - name: Configure Cumulus Linux Logical Interface Parameters
   nclu:
     commands:
-      - net add interface {{ item.name }} ip address {{ item.ipv4_address }}{{ item.ipv4_mask }}
+      - net add interface {{ item.name }} ip address {{ item.ipv4.address }}
     commit: True
   loop: "{{ logical_interfaces }}"
