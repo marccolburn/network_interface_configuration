@@ -3,7 +3,12 @@
   ios_interfaces:
     config: "{{ physical_interfaces }}"
 
-- name: Configure IOS Logical Interface Parameters
-  ios_l3_interfaces:
-    config: "{{ logical_interfaces }}"
-  when: logical_interfaces is defined
+- name: Configure DOT1Q command for Sub-interfaces
+  ios_config:
+    src: ios_sub_interfaces.j2 
+
+# Not using until subinterfaces are easy to configure this way
+#- name: Configure IOS Logical Interface Parameters
+#  ios_l3_interfaces:
+#    config: "{{ logical_interfaces }}"
+#  when: logical_interfaces is defined
