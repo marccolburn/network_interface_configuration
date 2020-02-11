@@ -6,3 +6,4 @@
 - name: Configure IOS Logical Interface Parameters
   ios_l3_interfaces:
     config: "{{ logical_interfaces }}"
+  when: logical_interfaces is defined
