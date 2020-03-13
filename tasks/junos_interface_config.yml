@@ -3,6 +3,19 @@
   junos_interfaces:
     config: "{{ physical_interfaces }}"
 
+- name: Generate config file
+  template:
+    src: junos_logical_interfaces.j2
+    dest: files/junos_logical_interfaces.cfg
+  delegate_to: localhost
+
 - name: Configure JUNOS Logical Interface Parameters
-  junos_l3_interfaces:
-    config: "{{ logical_interfaces }}"
+  junos_config:
+    src: junos_logical_interfaces.cfg
+    src_format: set
+    comment: Update logical interfaces
+
+# Commented out l3interfaces resource module due to issue with parse_l3_interfaces.py not working properly with vMX
+#- name: Configure JUNOS Logical Interface Parameters
+#  junos_l3_interfaces:
+#    config: "{{ logical_interfaces }}"

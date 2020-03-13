@@ -1,0 +1,7 @@
+{% for interface in logical_interfaces %}
+{% if interface.unit is defined and interface.unit != 0 %}
+set interface {{ interface.name }} vlan-tagging
+{% endif %}
+set interface {{ interface.name }} unit {{ interface.unit }} vlan-id {{ interface.unit }}
+set interface {{ interface.name }} unit {{ interface.unit }} family inet address {{ interface['ipv4'][0]['address'] }}
+{% endfor %}
