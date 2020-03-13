@@ -11,7 +11,7 @@
 
 - name: Configure JUNOS Logical Interface Parameters
   junos_config:
-    lines: "{{ lookup('template', 'junos_logical_interfaces.j2') }}"
+    lines: "{{ lookup('template', 'junos_logical_interfaces.j2').split('\n') }}"
     comment: Update logical interfaces
 
 # Commented out l3interfaces resource module due to issue with parse_l3_interfaces.py not working properly with vMX
