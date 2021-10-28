@@ -1,0 +1,14 @@
+---
+- name: Configure Cumulus Linux Physical Interface Parameters
+  nclu:
+    commands:
+      - net add interface {{ item.name }}
+    commit: True
+  loop: "{{ physical_interfaces }}"
+
+- name: Configure Cumulus Linux Logical Interface Parameters
+  nclu:
+    commands:
+      - net add interface {{ item.name }} ip address {{ item.ipv4.address }}
+    commit: True
+  loop: "{{ logical_interfaces }}"

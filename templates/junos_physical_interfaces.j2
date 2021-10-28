@@ -1,0 +1,9 @@
+{% for interface in physical_interfaces %}
+set interfaces {{ interface.name }} description {{ interface.description }}
+{% if interface.mtu is defined %}
+set interfaces {{ interface.name }} mtu {{ interface.mtu }}
+{% endif %}
+{% if interface.speed is defined %}
+set interfaces {{ interface.name }} speed {{ interface.speed }}
+{% endif %}
+{% endfor %}

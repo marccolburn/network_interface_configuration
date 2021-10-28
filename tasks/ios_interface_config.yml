@@ -1,0 +1,15 @@
+---
+- name: Configure IOS Physical Interface parameters
+  ios_interfaces:
+    config: "{{ physical_interfaces }}"
+
+- name: Configure logical interfaces
+  ios_config:
+    src: ios_logical_interfaces.j2 
+  when: logical_interfaces is defined
+
+# Not using until subinterfaces are easy to configure this way
+#- name: Configure IOS Logical Interface Parameters
+#  ios_l3_interfaces:
+#    config: "{{ logical_interfaces }}"
+#  when: logical_interfaces is defined

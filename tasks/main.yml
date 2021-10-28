@@ -1,0 +1,20 @@
+---
+- name: Configure Cisco IOS interfaces
+  include_tasks: ios_interface_config.yml
+  when: ansible_network_os == 'ios'
+
+- name: Configure Cisco IOSXR interfaces
+  include_tasks: iosxr_interface_config.yml
+  when: ansible_network_os == 'iosxr'
+
+- name: Configure Juniper interfaces
+  include_tasks: junos_interface_config.yml
+  when: ansible_network_os == 'junos'
+
+- name: Configure Arista EOS interfaces
+  include_tasks: eos_interface_config.yml
+  when: ansible_network_os == 'eos'
+
+- name: Configure Cumulus Interfaces
+  include_tasks: cumulus_interface_config.yml
+  when: ansible_network_os == 'cumulus'
