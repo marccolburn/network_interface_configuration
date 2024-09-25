@@ -1,0 +1,15 @@
+---
+- name: Create Set commands for debugging
+  template:
+    src: junos_physical_interfaces.j2
+    dest: "debug_configs/{{ inventory_hostname }}_physical_interface_config.txt"
+
+- name: Configure JUNOS Physical Interface Parameters
+  junos_config:
+    lines: "{{ lookup('template', 'junos_physical_interfaces.j2').split('\n') }}"
+    comment: Update Physical Interfaces
+
+- name: Configure JUNOS Logical Interface Parameters
+  junos_config:
+    lines: "{{ lookup('template', 'junos_logical_interfaces.j2').split('\n') }}"
+    comment: Update logical interfaces

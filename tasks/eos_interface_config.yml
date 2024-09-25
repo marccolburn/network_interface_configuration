@@ -1,0 +1,8 @@
+---
+- name: Configure EOS Physical Interface parameters
+  eos_interfaces:
+    config: "{{ physical_interfaces }}"
+
+- name: Configure EOS Logical Interface Parameters
+  eos_l3_interfaces:
+    config: "{{ logical_interfaces }}"
